@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">Query</h1>
+        
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                Query Data
+            </div>
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>หมายเลขงาน</th>
+                            <th>ชื่อ Login ผู้แจ้งปัญหา</th>
+                            <th>ประจำงวดงาน</th>
+                            <th>สถานที่ตั้งอุปกรณ์</th>
+                            <th>หน่วยงาน</th>
+                            <th>ผู้แจ้งปัญหา</th>
+                            <th>เบอร์โทรศัพท์</th>
+                            <th>วันที่แจ้งปัญหา</th>
+                            <th>ปัญหาที่เกิดขึ้น</th>
+                            <th>อุปกรณ์</th>
+                            <th>ยี่ห้อ</th>
+                            <th>รุ่น</th>
+                            <th>หมายเลขคุรุภัณฑ์</th>
+                            <th>หมายเลขประจำอุปกรณ์</th>
+                            <th>มอบหมายงาน</th>
+                            <th>รายละเอียดในการซ่อม</th>
+                            <th>งานค้าง</th>
+                            <th>สถานะการซ่อมบำรุง</th>
+                            <th>วันที่ซ่อมเสร็จ</th>
+                            <th>หมายเหตุ</th>
+                            <th>วันที่ส่งคืนอุปกรณ์</th>
+                            <th>อุปกรณ์ Spare</th>
+                            <th>หมายเลขประจำอุปกรณ์</th>
+                            <th>วันที่ Spare อุปกรณ์</th>
+                            <th>วันที่นำ Spare กลับบริษัท</th>
+                            <th>เปลี่ยนอุปกรณ์หรือไม่?</th>
+                            <th>อุปกรณ์ที่เปลี่ยน</th>
+                            <th>ยี่ห้อ</th>
+                            <th>รุ่น</th>
+                            <th>หมายเลขอุปกรณ์ที่เปลี่ยน</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for showdata in query_list %}
+                        <tr>
+                            <td>{{showdata.id}}</td>
+                            <td>{{showdata.user}}</td>
+                            <td>{{showdata.installment}}</td>
+                            <td>{{showdata.place}}</td>
+                            <td>{{showdata.institution}}</td>
+                            <td>{{showdata.informer}}</td>
+                            <td>{{showdata.phone_number}}</td>
+                            <td>{{showdata.issue_date}}</td>
+                            <td>{{showdata.issue}}</td>
+                            <td>{{showdata.device_name}}</td>
+                            <td>{{showdata.brand}}</td>
+                            <td>{{showdata.model}}</td>
+                            <td>{{showdata.inventory_number}}</td>
+                            <td>{{showdata.serial_number}}</td>
+                            <td>{{showdata.delegation}}</td>
+                            <td>{{showdata.detail}}</td>
+                            <td>{{showdata.blocklog}}</td>
+                            <td>{{showdata.status}}</td>
+                            <td>{{showdata.job_complete_date}}</td>
+                            <td>{{showdata.reason}}</td>
+                            <td>{{showdata.give_back_date}}</td>
+                            <td>{{showdata.spare_device}}</td>
+                            <td>{{showdata.serial_number_spare}}</td>
+                            <td>{{showdata.spare_device_date}}</td>
+                            <td>{{showdata.got_back_spare_device_date}}</td>
+                            <td>{{showdata.change_device}}</td>
+                            <td>{{showdata.change_device_name}}</td>
+                            <td>{{showdata.change_for_brand}}</td>
+                            <td>{{showdata.change_for_model}}</td>
+                            <td>{{showdata.change_for_serial_number}}</td>
+                        </tr>
+                        {% endfor %}  
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

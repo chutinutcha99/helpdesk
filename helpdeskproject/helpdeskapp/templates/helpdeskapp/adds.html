@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container-fluid px-4">
+    <h1 class="mt-4">เพิ่ม Ticket</h1>
+    <div class="row">
+        <div class="col-xs-12 col-md-12">
+            <form action="." method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    {{form.user | as_crispy_field}}
+                </div>
+                <div class="mb-3">
+                    {{form.installment | as_crispy_field}}
+                </div>
+                <div class="mb-3">
+                    {{form.place | as_crispy_field}}
+                </div>
+                <div class="mb-3">
+                    {{form.institution | as_crispy_field}}
+                </div>
+                <div class="mb-3">
+                    {{form.informer | as_crispy_field}}
+                </div>
+                <div class="mb-3">
+                    {{form.phone_number | as_crispy_field}}
+                </div>
+                <div class="mb-3">
+                    {{form.issue_date | as_crispy_field}}
+                </div>
+                <div class="mb-3">
+                    {{form.issue | as_crispy_field}}
+                </div>
+                <div class="mb-3">
+                    {{form.device_name | as_crispy_field}}
+                </div>
+                <div class="mb-3">
+                    {{form.brand | as_crispy_field}}
+                </div>
+                <div class="mb-3">
+                    {{form.model | as_crispy_field}}
+                </div>
+                <div class="mb-3">
+                    {{form.inventory_number | as_crispy_field}}
+                </div>
+                <div class="mb-3">
+                    {{form.serial_number | as_crispy_field}}
+                </div>
+                <div class="mb-3">
+                    {{form.os_system_name | as_crispy_field}}
+                </div>
+                <div class="mb-3">
+                    {{form.delegation | as_crispy_field}}
+                </div>
+                <div class="mb-3">
+                    {{form.responsibility | as_crispy_field}}
+                </div>
+                <div class="mb-3">
+                    {{form.detail | as_crispy_field}}
+                </div>
+                <div class="mb-3">
+                    {{form.blocklog | as_crispy_field}}
+                </div>
+                <div class="mb-3">
+                    {{form.status | as_crispy_field}}
+                </div>
+                <div class="mb-3">
+                    {{form.job_complete_date | as_crispy_field}}
+                </div>
+                <div class="mb-3">
+                    {{form.reason | as_crispy_field}}
+                </div>
+                <div class="mb-3">
+                    {{form.give_back_date | as_crispy_field}}
+                </div>
+                <div class="mb-3">
+                    {{form.spare_device | as_crispy_field}}
+                </div>
+                <div class="mb-3">
+                    {{form.serial_number_spare | as_crispy_field}}
+                </div>
+                <div class="mb-3">
+                    {{form.spare_device_date | as_crispy_field}}
+                </div>
+                <div class="mb-3">
+                    {{form.got_back_spare_device_date | as_crispy_field}}
+                </div>
+                <div class="mb-3">
+                    {{form.change_device | as_crispy_field}}
+                </div>
+                <div class="mb-3">
+                    {{form.change_device_name | as_crispy_field}}
+                </div>
+                <div class="mb-3">
+                    {{form.change_for_brand | as_crispy_field}}
+                </div>
+                <div class="mb-3">
+                    {{form.change_for_model | as_crispy_field}}
+                </div>
+                <div class="mb-3">
+                    {{form.change_for_serial_number | as_crispy_field}}
+                </div>
+                <div class="mb-3">
+                    {{form.upload_image_before | as_crispy_field}}
+                </div>
+                <button type="submit" class="btn btn-outline-primary mb-4">บันทึก</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

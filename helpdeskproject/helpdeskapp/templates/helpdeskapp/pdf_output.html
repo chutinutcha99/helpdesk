@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report HelpDesk</title>
+    <style>
+        @page {
+        size: A4 landscape;
+        margin: 2.5cm 1.5cm 2.5cm 1.5cm;
+    
+        @top-center {
+        content: "Data Report";
+        }
+        @bottom-right {
+            content: "Page" counter(page) " of " counter(page);
+        }
+    }
+    </style>
+</head>
+<body>
+{% block content %}
+<table id="datatablesSimple">
+    <thead>
+        <tr>
+            <th>หมายเลขงาน</th>
+            <th>ประจำงวดงาน</th>
+            <th>ชื่อ Login ผู้แจ้งปัญหา</th>
+            <th>สถานที่ตั้งอุปกรณ์</th>
+            <th>หน่วยงาน</th>
+            <th>วันที่แจ้งปัญหา</th>
+            <th>ผู้แจ้งปัญหา</th>
+            <th>ปัญหาที่เกิดขึ้น</th>
+            <th>อุปกรณ์</th>
+            <th>ยี่ห้อ</th>
+            <th>รุ่น</th>
+            <th>หมายเลขคุรุภัณฑ์</th>
+            <th>หมายเลขประจำอุปกรณ์</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for showdata in reports %}
+        <tr>
+            <td>{{showdata.id}}</td>
+            <td>{{showdata.installment}}</td>
+            <td>{{showdata.user}}</td>
+            <td>{{showdata.place}}</td>
+            <td>{{showdata.institution}}</td>
+            <td>{{showdata.issue_date}}</td>
+            <td>{{showdata.informer}}</td>
+            <td>{{showdata.issue}}</td>
+            <td>{{showdata.device_name}}</td>
+            <td>{{showdata.brand}}</td>
+            <td>{{showdata.model}}</td>
+            <td>{{showdata.inventory_number}}</td>
+            <td>{{showdata.serial_number}}</td>
+        </tr>
+        {% endfor %}  
+    </tbody>
+</table>
+{% endblock %}
+</body>
+</html>
+

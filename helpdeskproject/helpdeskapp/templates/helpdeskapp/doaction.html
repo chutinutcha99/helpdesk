@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">
+          {% if action == 'PROCESSING' %}
+          กำลังซ่อม
+          {% elif action == 'COMPLETE' %}
+          ซ่อมเสร็จแล้ว
+          {% elif action == 'CANCEL' %}
+          ยกเลิก
+          {% endif %}
+        </h1>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+            </div>
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>หมายเลขงาน</th>
+                            <th>ประจำงวดงาน</th>
+                            <th>ชื่อ Login ผู้แจ้งปัญหา</th>
+                            <th>สถานที่ตั้งอุปกรณ์</th>
+                            <th>หน่วยงาน</th>
+                            <th>วันที่แจ้งปัญหา</th>
+                            <th>ผู้แจ้งปัญหา</th>
+                            <th>ปัญหาที่เกิดขึ้น</th>
+                            <th>อุปกรณ์</th>
+                            <th>ยี่ห้อ</th>
+                            <th>รุ่น</th>
+                            <th>หมายเลขคุรุภัณฑ์</th>
+                            <th>หมายเลขประจำอุปกรณ์</th>
+                            <th>มอบหมายงาน</th>
+                            <th>รายละเอียดในการซ่อม</th>
+                            <th>งานค้าง</th>
+                            <th>วันที่ซ่อมเสร็จ</th>
+                            <th>วันที่ส่งคืนอุปกรณ์</th>
+                            <th>อุปกรณ์ Spare</th>
+                            <th>วันที่ Spare อุปกรณ์</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for showdata in data_list %}
+                        <tr>
+                            <td>{{showdata.id}}</td>
+                            <td>{{showdata.installment}}</td>
+                            <td>{{showdata.user}}</td>
+                            <td>{{showdata.place}}</td>
+                            <td>{{showdata.institution}}</td>
+                            <td>{{showdata.issue_date}}</td>
+                            <td>{{showdata.informer}}</td>
+                            <td>{{showdata.issue}}</td>
+                            <td>{{showdata.device_name}}</td>
+                            <td>{{showdata.brand}}</td>
+                            <td>{{showdata.model}}</td>
+                            <td>{{showdata.inventory_number}}</td>
+                            <td>{{showdata.serial_number}}</td>
+                            <td>{{showdata.delegation}}</td>
+                            <td>{{showdata.detail}}</td>
+                            <td>{{showdata.blocklog}}</td>
+                            <td>{{showdata.job_complete_date}}</td>
+                            <td>{{showdata.give_back_date}}</td>
+                            <td>{{showdata.spare_device}}</td>
+                            <td>{{showdata.spare_device_date}}</td>
+                        </tr>
+                        {% endfor %}  
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

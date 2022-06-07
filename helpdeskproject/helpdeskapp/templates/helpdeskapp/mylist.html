@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">แสดงรายละเอียดข้อมูล</h1>
+            {% if messages %}
+            <div class="alert alert-success" role="alert">
+                {% for message in messages %}
+                <b>{{message}}</b>
+                {% endfor %}
+            </div>
+            {% endif %}    
+        <div class="card mb-4">
+            <div class="card-header"> 
+                <i class="fas fa-table me-1"></i> 
+                แสดงรายละเอียดข้อมูลทั้งหมด
+            </div>
+            <div class="card-body">
+                <a href="{% url 'helpdeskapp:export-excel' %}" type="submit" class="btn btn-primary mb-3">Export Excel</a>
+                <a href="{% url 'helpdeskapp:export-pdf' %}" type="submit" class="btn btn-primary mb-3">Export PDF</a>
+                <a href="{% url 'helpdeskapp:export-blank-pdf' %}" type="submit" class="btn btn-primary mb-3">Export Blank PDF</a>
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>หมายเลขงาน</th>
+                            <th>ชื่อ Login ผู้แจ้งปัญหา</th>
+                            <th>ประจำงวดงาน</th>
+                            <th>สถานที่ตั้งอุปกรณ์</th>
+                            <th>หน่วยงาน</th>
+                            <th>ผู้แจ้งปัญหา</th>
+                            <th>เบอร์โทรศัพท์</th>
+                            <th>วันที่แจ้งปัญหา</th>
+                            <th>ปัญหาที่เกิดขึ้น</th>
+                            <th>อุปกรณ์</th>
+                            <th>ยี่ห้อ</th>
+                            <th>รุ่น</th>
+                            <th>หมายเลขคุรุภัณฑ์</th>
+                            <th>หมายเลขประจำอุปกรณ์</th>
+                            <th>มอบหมายงาน</th>
+                            <th>ผู้รับผิดชอบ</th>
+                            <th>รายละเอียดในการซ่อม</th>
+                            <th>งานค้าง</th>
+                            <th>สถานะการซ่อมบำรุง</th>
+                            <th>วันที่ซ่อมเสร็จ</th>
+                            <th>หมายเหตุ</th>
+                            <th>วันที่ส่งคืนอุปกรณ์</th>
+                            <th>อุปกรณ์ Spare</th>
+                            <th>หมายเลขประจำอุปกรณ์</th>
+                            <th>วันที่ Spare อุปกรณ์</th>
+                            <th>วันที่นำ Spare กลับบริษัท</th>
+                            <th>เปลี่ยนอุปกรณ์หรือไม่?</th>
+                            <th>อุปกรณ์ที่เปลี่ยน</th>
+                            <th>ยี่ห้อ</th>
+                            <th>รุ่น</th>
+                            <th>หมายเลขอุปกรณ์ที่เปลี่ยน</th>
+                            <th>ภาพก่อนซ่อม</th>
+                            <th>ภาพหลังซ่อม</th>
+                            <th>จัดการ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for showdata in ticket_list%}
+                        <tr>
+                            <td width='100px'>{{showdata.id}}</td>
+                            <td>{{showdata.user}}</td>
+                            <td>{{showdata.installment}}</td>
+                            <td>{{showdata.place}}</td>
+                            <td>{{showdata.institution}}</td>
+                            <td>{{showdata.informer}}</td>
+                            <td>{{showdata.phone_number}}</td>
+                            <td>{{showdata.issue_date}}</td>
+                            <td>{{showdata.issue}}</td>
+                            <td>{{showdata.device_name}}</td>
+                            <td>{{showdata.brand}}</td>
+                            <td>{{showdata.model}}</td>
+                            <td>{{showdata.inventory_number}}</td>
+                            <td>{{showdata.serial_number}}</td>
+                            <td>{{showdata.delegation}}</td>
+                            <td>{{showdata.responsibility}}</td>
+                            <td>{{showdata.detail}}</td>
+                            <td>{{showdata.blocklog}}</td>
+                            <td>{{showdata.status}}</td>
+                            <td>{{showdata.job_complete_date}}</td>
+                            <td>{{showdata.reason}}</td>
+                            <td>{{showdata.give_back_date}}</td>
+                            <td>{{showdata.spare_device}}</td>
+                            <td>{{showdata.serial_number_spare}}</td>
+                            <td>{{showdata.spare_device_date}}</td>
+                            <td>{{showdata.got_back_spare_device_date}}</td>
+                            <td>{{showdata.change_device}}</td>
+                            <td>{{showdata.change_device_name}}</td>
+                            <td>{{showdata.change_for_brand}}</td>
+                            <td>{{showdata.change_for_model}}</td>
+                            <td>{{showdata.change_for_serial_number}}</td>
+                            
+                            <td>{% if showdata.upload_image_before %}
+                                <a href="{{showdata.upload_image_before.url}}" download> ดาวน์โหลด</a>
+                            {% endif %}</td>
+                            <td>{% if showdata.upload_image_after %}
+                                <a href="{{showdata.upload_image_after.url}}" download> ดาวน์โหลด</a>
+                            {% endif %}</td>
+                            <td><a href="{% url 'helpdeskapp:edit' showdata.id %}" class="btn btn-warning" id="edit" name="edit" value="edit">แก้ไข</a></td>
+                        </tr> 
+                        {% endfor %} 
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

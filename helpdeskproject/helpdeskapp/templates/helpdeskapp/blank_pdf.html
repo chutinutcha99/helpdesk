@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report HelpDesk</title>
+    <style>
+        @page {
+        size: A4;
+        margin: 2.5cm 1.5cm 2.5cm 1.5cm;
+    
+        @top-center {
+        content: "Data Report";
+        }
+        @bottom-right {
+            content: "Page" counter(page) " of " counter(page);
+        }
+    }
+    </style>
+</head>
+<body>
+{% block content %}
+<table id="datatablesSimple">
+    <tbody>
+        <tr>
+            <th scope="row">หมายเลขงาน</th>
+            <td style="padding-bottom: 5%;">...........</td>
+        </tr>
+        <tr>
+            <th scope="row">ประจำงวดงาน</th>
+            <td style="padding-bottom: 5%;">...........</td>
+        </tr>
+        <tr>
+            <th scope="row">ชื่อ Login ผู้แจ้งปัญหา</th>
+            <td style="padding-bottom: 5%;">...........</td>
+        </tr>
+        <tr>
+            <th scope="row">สถานที่ตั้งอุปกรณ์</th>
+            <td style="padding-bottom: 5%;">...........</td>
+        </tr>
+        <tr>
+            <th scope="row">หน่วยงาน</th>
+            <td style="padding-bottom: 5%;">...........</td>
+        </tr>
+        <tr>
+            <th scope="row">วันที่แจ้งปัญหา</th>
+            <td style="padding-bottom: 5%;">...........</td>
+        </tr>
+        <tr>
+            <th scope="row">ผู้แจ้งปัญหา</th>
+            <td style="padding-bottom: 5%;">...........</td>
+        </tr>
+        <tr>
+            <th scope="row">ปัญหาที่เกิดขึ้น</th>
+            <td style="padding-bottom: 5%;">...........</td>
+        </tr>
+        <tr>
+            <th scope="row">อุปกรณ์</th>
+            <td style="padding-bottom: 5%;">...........</td>
+        </tr>
+        <tr>
+            <th scope="row">ยี่ห้อ</th>
+            <td style="padding-bottom: 5%;">...........</td>
+        </tr>
+        <tr>
+            <th scope="row">รุ่น</th>
+            <td style="padding-bottom: 5%;">...........</td>
+        </tr>
+        <tr>
+            <th scope="row">หมายเลขคุรุภัณฑ์</th>
+            <td style="padding-bottom: 5%;">...........</td>
+        </tr>
+        <tr>
+            <th scope="row">หมายเลขประจำอุปกรณ์</th>
+            <td style="padding-bottom: 5%;">...........</td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}
+</body>
+</html>
+
